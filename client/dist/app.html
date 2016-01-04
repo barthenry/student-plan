@@ -1,0 +1,33 @@
+<template>
+    <require from="nav-bar"></require>
+    <require from="bootstrap/css/bootstrap.css"></require>
+    <require from="../styles/bootflat.css"></require>
+    <require from="../styles/bootflat-custom.css"></require>
+    <require from="../styles/custom-styles.css"></require>
+    <require from="./modals/register"></require>
+    <require from="./modals/login"></require>
+
+    <nav-bar router.bind="router"></nav-bar>
+
+
+    <div class="page-host col-md-12">
+        <router-view></router-view>
+    </div>
+
+    <script>
+        System.import('./app.js')
+    </script>
+<!--    <require from="../scripts/fullcalendar/moment.js"></require>-->
+<!--    <require from="../scripts/fullcalendar/fullcalendar.js"></require>-->
+    <!--<require from="../scripts/bootflat/icheck.min.js"></require>
+    <require from="../scripts/bootflat/jquery.fs.selecter.min.js"></require>
+    <require from="../scripts/bootflat/jquery.fs.stepper.min.js"></require>-->
+<!--    <require from="../scripts/fullcalendar/moment.js"></require>
+    <require from="../scripts/fullcalendar/fullcalendar.js"></require>-->
+    <!--<require from="../scripts/init.js"></require>-->
+    <!--<script src="init.js"></script>-->
+    <!--<nav-modal data.bind="loginModal"></nav-modal>
+    <nav-modal data.bind="registerModal"></nav-modal>-->
+    <login-modal data.bind="loginModal"></login-modal>
+    <register-modal data.bind="registerModal"></register-modal>
+</template>

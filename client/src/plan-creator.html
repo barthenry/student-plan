@@ -1,0 +1,66 @@
+<template>
+    <require from="../styles/fullcalendar.css"></require>
+    <require from="../styles/fullcalendar-custom.css"></require>
+
+    <div id="menu" class="panel panel-default col-md-5 nopadding">
+        <ul id="myTab1" class="nav nav-tabs nav-justified">
+            <li class="active"><a href="#preferences" data-toggle="tab">Preferencje</a></li>
+            <li><a href="#settings" data-toggle="tab">Ustawienia</a></li>
+        </ul>
+
+        <div class="tab-content panel-content col-md-12 nopadding">
+            <div class="tab-pane panel-body active" id="preferences">
+                <br>
+
+                <div class="checkbox">
+                    <input type="checkbox" id="cb1">
+                    <label for="cb1">Ograniczaj okienka</label>
+                </div>
+
+                <br>
+                <hr class="fc-divider">
+
+                <div class="courses-container">
+                    <div class="courses col-md-6 nopadding">
+                        <div class="list-group">
+
+                            <a href="#" repeat.for="course of courses" class="list-group-item course <!--active-->" data-target="course-1">
+                                <span class="badge ${course.isGroupChosen ? 'badge-success' : 'badge-danger'}">${course.groups.length}</span>
+                                <b>${course.name}</b><br>${course.form}
+                                        <span class="badge ${course.isFilterActive ? 'badge-primary' : 'badge-default'}">
+                                            <span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
+                                        </span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div  class="classes col-md-6 nopadding">
+                        <div class="list-group">
+                            <a repeat.for="group of courses[0].groups" href="#" class="list-group-item ${group.isChosen ? 'active' : ''}">
+                                <b>${group.id}</b><br>
+                                <i>${group.teacher}</i><br>
+                                ${group.day}, ${group.time}, ${group.place}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane panel-body" id="settings">
+
+            </div>
+        </div>
+    </div>
+
+    <div id="calendar-area" class="col-md-7 nopadding-right">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div id="calendar"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--<modal-template data.bind="testModal"></modal-template>
+    <modal-template data.bind="testModal2"></modal-template>-->
+</template>
