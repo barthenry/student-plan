@@ -1,9 +1,9 @@
 var config = require('./config.global');
 
-config.env = "production";
-config.port = 10000;
+config.env = "development";
+config.port = 5000;
 config.mongo = {};
-config.mongo.connectionstring = 'mongodb://localhost/' + 'student-plan-prod';
+config.mongo.connectionstring = 'mongodb://localhost/' + 'student-plan-dev';
 config.TOKEN_SECRET = process.env.TOKEN_SECRET || 'A hard to guess string';
 config.MONGO_URI = process.env.MONGO_URI || 'localhost';
 config.FACEBOOK_SECRET = process.env.FACEBOOK_SECRET || 'Facebook Client Secret';
