@@ -1,30 +1,21 @@
-import {customElement, bindable} from 'aurelia-framework';
+export class Modal {
+  $triggerButton = null;
+  showing = null;
+  error = null;
 
+  attachToButton(triggerButtonId) {
+    this.$triggerButton = $(`#${triggerButtonId}`);
+    this.$triggerButton.click(() => this.showModal());
+  }
 
-export class Modal{
-    $triggerButton = null;
-    showing = null;
-    error = null;
+  closeModal() {
+    this.reset();
+    this.showing = false;
+  }
 
-    attachToButton(triggerButtonId){
-        var that = this;
+  reset() {}
 
-        console.log("attached");
-        this.$triggerButton = $("#"+triggerButtonId);
-
-        this.$triggerButton.click(function(){
-            that.showModal();
-        });
-    }
-
-    closeModal(){
-        this.reset();
-        this.showing = false;
-    }
-
-    reset(){}
-
-    showModal(){
-        this.showing = true;
-    }
+  showModal() {
+    this.showing = true;
+  }
 }

@@ -1,38 +1,35 @@
-export class Modal{
-    title = null;
-    contentView = null;
-    triggerButtonId = null;
-    formId = null;
-    buttons = [];
+export class Modal {
+  buttons = [];
 
-    setTitle(title){
-        this.title = title;
-        return this;
-    }
+  constructor({title, buttonId, formId, contentView}) {
+    this.title = title;
+    this.triggerButtonId = buttonId;
+    this.formId = formId;
+    this.contentView = contentView;
+  }
 
-    setContentView(contentView){
-        this.contentView = contentView;
-        return this;
-    }
+  setTitle(title) {
+    this.title = title;
+    return this;
+  }
 
-    setTriggerButtonId(buttonId){
-        this.triggerButtonId = buttonId;
-        return this;
-    }
+  setContentView(contentView) {
+    this.contentView = contentView;
+    return this;
+  }
 
-    setFormId(formId){
-        this.formId = formId;
-        return this;
-    }
+  setTriggerButtonId(buttonId) {
+    this.triggerButtonId = buttonId;
+    return this;
+  }
 
-    addButton(text, id, classes, role = ''){
-        this.buttons.push({
-            text: text,
-            id: id,
-            classes: classes,
-            role: role
-        });
+  setFormId(formId) {
+    this.formId = formId;
+    return this;
+  }
 
-        return this;
-    }
+  addButton(text, id, classes, role = '') {
+    this.buttons.push({ text, id, classes, role });
+    return this;
+  }
 }
