@@ -1,5 +1,6 @@
 node_modules
 jspm_packages
+!*/pl-PL.js
 .idea
 .DS_STORE
 /dist
