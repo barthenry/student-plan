@@ -1,5 +1,4 @@
 <template>
-
     <nav class="navbar navbar-default" role="navigation">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">
@@ -10,32 +9,28 @@
 
         <div class="container">
             <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav">
                     <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
                         <a data-toggle="collapse" data-target="#skeleton-navigation-navbar-collapse.in" href.bind="row.href">${row.title}</a>
                     </li>
-
-                </ul>
-
-
-                <ul if.bind="!isAuthenticated" class="nav navbar-nav navbar-right">
-                    <li><a href="#" id="loginTriggerButton">Zaloguj</a></li>
-                    <li><a href="#" id="registerTriggerButton">Rejestruj</a></li>
-                </ul>
-
-                <ul if.bind="isAuthenticated" class="nav navbar-nav navbar-right">
-                    <li><a href="#">Profil</a></li>
-                    <li><a href="#/logout" id="logoutTriggerButton">Wyloguj</a></li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#" id="shareTriggerButton">Podziel się planem</a></li>
-                </ul>
-
-                <ul>
                     <li class="loader" if.bind="router.isNavigating">
                         <i class="fa fa-spinner fa-spin fa-2x"></i>
                     </li>
+
+                    <li><a href="#" id="shareTriggerButton">Podziel się planem</a></li>
+
+                    <template if.bind="!isAuthenticated">
+                        <li><a href="#" id="loginTriggerButton">Zaloguj</a></li>
+                        <li><a href="#" id="registerTriggerButton">Rejestruj</a></li>
+                    </template>
+
+                    <template if.bind="isAuthenticated">
+                        <li><a href="#">Profil</a></li>
+                        <li><a href="#/logout" id="logoutTriggerButton">Wyloguj</a></li>
+                    </template>
                 </ul>
             </div>
         </div>

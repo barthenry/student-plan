@@ -9,7 +9,7 @@
 
   <body aurelia-app="main">
     <div class="splash">
-      <div class="message">trwa wczytywanie aplikacji</div>
+      <div class="message">Trwa wczytywanie aplikacji...</div>
       <i class="fa fa-spinner fa-spin"></i>
     </div>
 
@@ -24,7 +24,7 @@
     <script src="../scripts/fullcalendar/moment.js"></script>
     <script src="../scripts/fullcalendar/fullcalendar.js"></script>
     <script>
-      System.import('aurelia-bootstrapper');
+      System.import('aurelia-bootstrapper').catch(console.error.bind(console)); //eslint-disable-line no-console
     </script>
   </body>
 </html>
