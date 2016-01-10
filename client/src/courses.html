@@ -1,0 +1,24 @@
+<template>
+	<require from="ObjectValuesValueConverter"></require>
+
+	<require from="course"></require>
+	<require from="group"></require>
+
+	<div class="courses-container">
+		<div class="courses col-md-6 nopadding">
+			<div class="list-group">
+				<template repeat.for="course of courses.byIDs | objectValues">
+					<course course.bind="course"></course>
+				</template>
+			</div>
+		</div>
+
+		<div  class="classes col-md-6 nopadding">
+			<div class="list-group">
+				<template repeat.for="group of courses.selected.groups.byIDs | objectValues">
+					<group group.bind="group"></group>
+				</template>
+			</div>
+		</div>
+	</div>
+</template>

@@ -77,6 +77,8 @@
       "fetch": "github:github/fetch@^0.10.1",
       "font-awesome": "npm:font-awesome@^4.4.0",
       "fullcalendar": "npm:fullcalendar@^2.5.0",
+      "lodash": "npm:lodash@^3.10.1",
+      "redux": "npm:redux@^3.0.5",
       "text": "github:systemjs/plugin-text@^0.0.3"
     },
     "devDependencies": {

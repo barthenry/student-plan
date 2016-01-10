@@ -1,6 +1,6 @@
 <template>
-    <require from="../styles/fullcalendar.css"></require>
-    <require from="../styles/fullcalendar-custom.css"></require>
+    <require from="calendar"></require>
+    <require from="courses"></require>
 
     <div id="menu" class="panel panel-default col-md-5 nopadding">
         <ul id="myTab1" class="nav nav-tabs nav-justified">
@@ -20,30 +20,7 @@
                 <br>
                 <hr class="fc-divider">
 
-                <div class="courses-container">
-                    <div class="courses col-md-6 nopadding">
-                        <div class="list-group">
-
-                            <a href="#" repeat.for="course of courses" class="list-group-item course <!--active-->" data-target="course-1">
-                                <span class="badge ${course.isGroupChosen ? 'badge-success' : 'badge-danger'}">${course.groups.length}</span>
-                                <b>${course.name}</b><br>${course.form}
-                                        <span class="badge ${course.isFilterActive ? 'badge-primary' : 'badge-default'}">
-                                            <span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
-                                        </span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div  class="classes col-md-6 nopadding">
-                        <div class="list-group">
-                            <a repeat.for="group of courses[0].groups" href="#" class="list-group-item ${group.isChosen ? 'active' : ''}">
-                                <b>${group.id}</b><br>
-                                <i>${group.teacher}</i><br>
-                                ${group.day}, ${group.time}, ${group.place}
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <courses courses.bind="courses"></courses>
             </div>
 
             <div class="tab-pane panel-body" id="settings">
