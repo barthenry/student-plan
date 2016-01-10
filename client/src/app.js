@@ -1,11 +1,16 @@
-import {inject} from 'aurelia-framework';
-import {FetchConfig, AuthorizeStep} from 'aurelia-auth';
-import {Modal} from './models';
+import { inject } from 'aurelia-framework';
+import { EventAggregator } from 'aurelia-event-aggregator';
+import { FetchConfig, AuthorizeStep } from 'aurelia-auth';
+import { filter, find } from 'lodash';
+import { Modal } from './models';
+import { createStore, combineReducers, initialState } from 'store.js';
+import coursesReducer from './reducers/courses.js';
 
-@inject(FetchConfig)
+@inject(FetchConfig, EventAggregator)
 export class App {
-  constructor(fetchConfig) {
+  constructor(fetchConfig, events) {
     this.fetchConfig = fetchConfig;
+    this.events = events;
 
     this.shareModal = new Modal({
       title: 'Podziel się planem',
@@ -21,6 +26,20 @@ export class App {
       title: 'Rejestracja',
       buttonId: 'registerTriggerButton'
     });
+
+    const store = createStore(combineReducers({
+      courses: coursesReducer
+    }), initialState, events);
+
+    this.state = store.getState();
+
+    this.events.subscribe('newState', () => {
+      this.state = store.getState();
+
+      this.events.publish('fc.events', this.getChosenGroups());
+    });
+
+    window.store = store;
   }
 
   activate() {
@@ -32,7 +51,7 @@ export class App {
     config.addPipelineStep('authorize', AuthorizeStep);
 
     config.map([
-      { route: ['', 'creator'], name: 'creator',    moduleId: './plan-creator',   title: 'Kreator planu' },
+      { route: ['', 'plan-creator'], name: 'plan-creator',    moduleId: './plan-creator',   title: 'Kreator planu' },
       { route: 'add-group',     name: 'add-group',  moduleId: './add-group',      title: 'Dodaj grupę' },
       { route: 'share',         name: 'share',      moduleId: './share',          title: 'Podziel się planem' },
       { route: 'register',      name: 'register',   moduleId: './register',       title: 'Zarejestruj' },
@@ -41,6 +60,16 @@ export class App {
       { route: 'logout',        name: 'logout',     moduleId: './logout',         title: 'Logout', auth: true }
     ]);
 
+    // .map((route) => {
+    //   route.settings = this.state;
+    //   return route;
+    // })
+
     this.router = router;
+  }
+
+  getChosenGroups() {
+    return filter(this.state.courses.byIDs, (course) => course.isGroupChosen)
+      .map((course) => find(course.groups.byIDs, (group) => group.isChosen));
   }
 }

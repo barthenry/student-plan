@@ -1,0 +1,10 @@
+<template>
+	<a href="#" class="list-group-item course ${course.isSelected ? 'active' : ''}" click.delegate="selectCourse()">
+		<span class="badge ${course.isGroupChosen ? 'badge-success' : 'badge-danger'}">${course.groups.length}</span>
+		<b>${course.name}</b><br>${course.form}
+
+		<span class="badge ${course.isFilterActive ? 'badge-primary' : 'badge-default'}">
+			<span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
+		</span>
+	</a>
+</template>
