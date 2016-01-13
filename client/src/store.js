@@ -6,7 +6,7 @@ export const initialState = {
       1235: {
         id: 1235,
         name: 'Nazwa kursu 1',
-        form: 'Wykład',
+        form: 'Wykład2',
         groups: {
           byIDs: {
             'AKZ023231a': {
