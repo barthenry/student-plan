@@ -12,10 +12,10 @@ export class Calendar {
 
     this.monday = moment().startOf('week');
     this.shortNamesMap = {
-      pon: 1,
+      pn: 1,
       wt: 2,
-      sr: 3,
-      czw: 4,
+      'śr': 3,
+      cz: 4,
       pt: 5
     };
 	}
@@ -38,7 +38,11 @@ export class Calendar {
       slotLabelFormat: 'H:mm',
       timeFormat: 'H:mm',
       hiddenDays: [6, 0],
-      dayNames: ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota']
+      dayNames: ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota'],
+      eventRender: (event, element) => element
+        .find('.fc-content').append(`${event.place}<br>${event.teacher}`)
+          .end()
+        .append(`<span style="position: absolute; right: 5px; bottom: 0;">${event.form}</span>`)
     });
 
     this.fullCalendar.render();
@@ -51,7 +55,7 @@ export class Calendar {
 
   mapCoursesToEvents(courses) {
     return courses.map((course) => ({
-      title: course.id,
+      ...course,
       start: this.monday.clone().add({
         days: this.shortNamesMap[course.day],
         hours: course.time.split(':')[0],

@@ -60,16 +60,14 @@ export class App {
       { route: 'logout',        name: 'logout',     moduleId: './logout',         title: 'Logout', auth: true }
     ]);
 
-    // .map((route) => {
-    //   route.settings = this.state;
-    //   return route;
-    // })
-
     this.router = router;
   }
 
   getChosenGroups() {
     return filter(this.state.courses.byIDs, (course) => course.isGroupChosen)
-      .map((course) => find(course.groups.byIDs, (group) => group.isChosen));
+      .map((course) => Object.assign({
+        title: course.name,
+        form: course.form[0].toUpperCase()
+      }, find(course.groups.byIDs, (group) => group.isChosen)));
   }
 }
