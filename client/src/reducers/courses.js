@@ -16,6 +16,9 @@ export default function(courses = {}, action) {
   case 'SELECT_GROUP':
     courseReducer(courses.selected, action);
     return courses;
+  case 'UNSELECT_GROUP':
+    courseReducer(courses.selected, action);
+    return courses;
   default:
     return courses;
   }
@@ -33,6 +36,11 @@ function courseReducer(course = {}, action) {
     return course;
   case 'SELECT_GROUP':
     course.isGroupChosen = true;
+    groupsReducer(course.groups, action);
+
+    return course;
+  case 'UNSELECT_GROUP':
+    course.isGroupChosen = false;
     groupsReducer(course.groups, action);
 
     return course;
@@ -54,6 +62,11 @@ function groupsReducer(groups = {}, action) {
     groupReducer(groups.selected, action);
 
     return groups;
+  case 'UNSELECT_GROUP':
+    groupReducer(groups.selected, action);
+    groups.selected = {};
+
+    return groups;
   default:
     return groups;
   }
@@ -67,6 +80,10 @@ function groupReducer(group = {}, action) {
     if (group.id === action.id) {
       group.isChosen = true;
     }
+
+    return group;
+  case 'UNSELECT_GROUP':
+    group.isChosen = false;
 
     return group;
   default:
