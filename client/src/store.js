@@ -15,7 +15,8 @@ export const initialState = {
               day: 'cz',
               time: '15:15',
               place: 'B-4 326',
-              isChosen: false
+              isChosen: false,
+              occurance: 'odd'
             },
             'AKZ023231b': {
               id: 'AKZ023231b',
@@ -30,7 +31,7 @@ export const initialState = {
         },
         isFilterEnabled: true,
         isGroupChosen: false,
-        isSelected: true
+        isSelected: false
       },
       2122: {
         id: 2122,
