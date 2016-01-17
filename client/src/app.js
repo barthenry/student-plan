@@ -51,13 +51,14 @@ export class App {
     config.addPipelineStep('authorize', AuthorizeStep);
 
     config.map([
-      { route: ['', 'plan-creator'], name: 'plan-creator',    moduleId: './plan-creator',   title: 'Kreator planu' },
-      { route: 'add-group',     name: 'add-group',  moduleId: './add-group',      title: 'Dodaj grupę' },
-      { route: 'share',         name: 'share',      moduleId: './share',          title: 'Podziel się planem' },
-      { route: 'register',      name: 'register',   moduleId: './register',       title: 'Zarejestruj' },
-      { route: 'login',         name: 'login',      moduleId: './login',          title: 'Zaloguj' },
-      { route: 'profile',       name: 'profile',    moduleId: './profile',        title: 'Profil', auth: true },
-      { route: 'logout',        name: 'logout',     moduleId: './logout',         title: 'Logout', auth: true }
+        { route: ['', 'plan-creator'], name: 'plan-creator',    moduleId: './plan-creator',   title: 'Kreator planu' },
+        { route: 'add-group',     name: 'add-group',  moduleId: './add-group',      title: 'Dodaj grupę' },
+        { route: 'share',         name: 'share',      moduleId: './share',          title: 'Podziel się planem' },
+        { route: 'register',      name: 'register',   moduleId: './register',       title: 'Zarejestruj' },
+        { route: 'login',         name: 'login',      moduleId: './login',          title: 'Zaloguj' },
+        { route: 'profile',       name: 'profile',    moduleId: './profile',        title: 'Profil', auth: true },
+        { route: 'logout',        name: 'logout',     moduleId: './logout',         title: 'Logout', auth: true },
+        { route: ':id', name: 'plan',    moduleId: './plan-creator',   title: 'Kreator planu' }
     ]);
 
     // .map((route) => {

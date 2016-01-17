@@ -69,6 +69,6 @@ export class RegisterModal extends Modal{
         this.passwordConfirmation = '';
         this.displayName = '';
         this.validation.clear();
-
+        this.errorMessage = "";
     }
 }

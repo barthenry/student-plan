@@ -47,6 +47,6 @@ export class LoginModal extends Modal{
         this.email = '';
         this.password = '';
         this.validation.clear();
-
+        this.errorMessage = "";
     }
 }

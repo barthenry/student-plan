@@ -29,7 +29,9 @@ var plan = new Schema({
         byIDs: Object
     },
     publicId: String,
-    privateId: String
+    privateId: String,
+    isEditable: Boolean,
+    module: String
 });
 
 module.exports = mongoose.model('Plan', plan);
