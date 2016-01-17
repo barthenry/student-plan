@@ -4,9 +4,6 @@ export default function(courses = {}, action) {
   switch (action.type) {
   case 'SELECT_COURSE':
     const previouslySelected = find(courses.byIDs, (course) => course.isSelected);
-    console.log('select course');
-    console.log(courses);
-
 
     if (previouslySelected) {
       courseReducer(previouslySelected, action);
@@ -17,14 +14,12 @@ export default function(courses = {}, action) {
 
     return courses;
   case 'SELECT_GROUP':
-      console.log('select group');
     courseReducer(courses.selected, action);
-      console.log(courses);
     return courses;
   case 'SET_PLAN':
-      console.log("SET_PLAN invoked");
-      courses = action.courses;
-      return courses;
+    Object.assign(courses, action.courses);
+
+    return courses;
   case 'UNSELECT_GROUP':
     courseReducer(courses.selected, action);
     return courses;

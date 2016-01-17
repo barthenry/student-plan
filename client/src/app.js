@@ -67,8 +67,7 @@ export class App {
   getChosenGroups() {
     return filter(this.state.courses.byIDs, (course) => course.isGroupChosen)
       .map((course) => Object.assign({
-        title: course.name,
-        form: course.form[0].toUpperCase()
+        title: course.name
       }, find(course.groups.byIDs, (group) => group.isChosen)));
   }
 }
