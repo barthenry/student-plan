@@ -9,7 +9,14 @@ export class Group {
     this.events = events;
   }
 
-  selectGroup() {
+  clickGroup() {
+    if (this.group.isChosen) {
+      return this.events.publish('dispatch', {
+        type: 'UNSELECT_GROUP',
+        id: this.group.id
+      });
+    }
+
     this.events.publish('dispatch', {
       type: 'SELECT_GROUP',
       id: this.group.id

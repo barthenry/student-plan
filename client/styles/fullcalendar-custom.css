@@ -1,3 +1,65 @@
 .fc-unthemed .fc-today {
 	background: #fff;
 }
+
+.fc-odd-event {
+  left: 50% !important;
+}
+
+.fc-even-event {
+  right: 50% !important;
+}
+
+.fc-form-indicator, .fc-remove-event {
+  width: 15px;
+  position: absolute;
+  z-index: 5;
+  right: 0;
+}
+
+.fc-form-indicator {
+  bottom: 0;
+}
+
+.fc-remove-event {
+  top: 0;
+}
+
+.fc-remove-event:hover {
+  color: white;
+}
+
+.fc-icon-close::before {
+  content: "\2716";
+}
+
+.fc-content {
+  margin-right: 15px;
+  overflow: hidden;
+}
+
+.fc-content-line {
+  display: block;
+  word-wrap: break-word;
+}
+
+.fc-bg {
+	opacity: 1 !important;
+}
+
+.fc-seminar {
+	background-color: #F3DBB7 !important ;
+}
+.fc-lecture {
+	background-color: #F75550 !important;
+}
+.fc-laboratory {
+	background-color: #A3C7F5 !important;
+}
+.fc-class {
+	background-color: #ABE996 !important;
+}
+.fc-project {
+	background-color: #ECBDF3 !important;
+}
+

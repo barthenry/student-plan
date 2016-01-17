@@ -1,5 +1,5 @@
 <template>
-	<a href="#" class="list-group-item ${group.isChosen ? 'active' : ''}" click.delegate="selectGroup()">
+	<a href="#" class="list-group-item ${group.isChosen ? 'active' : ''}" click.delegate="clickGroup()">
 		<b>${group.id}</b><br>
 		<i>${group.teacher}</i><br>
 		${group.day}, ${group.time}, ${group.place}

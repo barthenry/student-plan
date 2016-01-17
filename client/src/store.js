@@ -12,15 +12,16 @@ export const initialState = {
             'AKZ023231a': {
               id: 'AKZ023231a',
               teacher: 'Jakiś Nauczyciel 1',
-              day: 'czw',
+              day: 'cz',
               time: '15:15',
               place: 'B-4 326',
-              isChosen: false
+              isChosen: false,
+              occurance: 'odd'
             },
             'AKZ023231b': {
               id: 'AKZ023231b',
               teacher: 'Jakiś Nauczyciel 1',
-              day: 'pon',
+              day: 'pn',
               time: '13:15',
               place: 'B-4 326',
               isChosen: false
@@ -30,7 +31,7 @@ export const initialState = {
         },
         isFilterEnabled: true,
         isGroupChosen: false,
-        isSelected: true
+        isSelected: false
       },
       2122: {
         id: 2122,
@@ -41,7 +42,7 @@ export const initialState = {
             'AKZ023232a': {
               id: 'AKZ023232a',
               teacher: 'Jakiś Nauczyciel 2',
-              day: 'czw',
+              day: 'cz',
               time: '11:15',
               place: 'C-4 22',
               isChosen: false
@@ -57,7 +58,7 @@ export const initialState = {
             'AKZ023232c': {
               id: 'AKZ023232c',
               teacher: 'Jakiś Nauczyciel 2',
-              day: 'pon',
+              day: 'pn',
               time: '9:15',
               place: 'B-1 26',
               isChosen: false
