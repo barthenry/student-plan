@@ -96,6 +96,7 @@
     "gulp-load-plugins": "^1.1.0",
     "gulp-nodemon": "^2.0.6",
     "proxy-middleware": "^0.15.0",
+    "shortid": "^2.2.4",
     "url": "^0.11.0"
   }
 }

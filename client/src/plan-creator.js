@@ -5,39 +5,37 @@ import { EventAggregator } from 'aurelia-event-aggregator';
 
 @inject(Container, HttpClient, EventAggregator)
 export class PlanCreator {
+  @bindable courses;
 
-    constructor(container, http, events) {
-        console.log("się dzieje 1");
-        //this.courses = container.parent.viewModel.state.courses;
-        console.log("się dzieje 2");
-        http.configure(config => {
-            config
-              .withBaseUrl('http://localhost:5000/');
-        });
+  constructor(container, http, events) {
+    this.courses = container.parent.viewModel.state.courses;
 
-        this.container = container;
-        this.http = http;
-        this.events = events;
+    http.configure(config => {
+      config
+        .withBaseUrl('http://localhost:5000/');
+    });
+
+    this.container = container;
+    this.http = http;
+    this.events = events;
+  }
+
+  activate(params) {
+    if (!params.id) {
+      return;
     }
 
-    activate(params){
-        console.log("ID planu:", params.id);
-        if(params.id != null){
-            this.getPlan(params.id);
-        }
-    }
+    this.getPlan(params.id);
+  }
 
-    getPlan(id){
-        this.http.fetch('plan/get/'+id)
-        .then(response => response.json())
-        .then(data => {
-            console.log("POBRANY PLAN: ", data);
-            this.events.publish('dispatch', {
-                type: 'SET_PLAN',
-                courses: data.courses
-            });
-
-            //this.courses = data.courses;
-        });
-    }
+  getPlan(id) {
+    this.http.fetch(`plan/get/${id}`)
+    .then(response => response.json())
+    .then(data => {
+      this.events.publish('dispatch', {
+        type: 'SET_PLAN',
+        courses: data.courses
+      });
+    });
+  }
 }
