@@ -1,6 +1,12 @@
 import { mapValues } from 'lodash';
 
 export const initialState = {
+  plan: {
+    privateId: '',
+    publicId: '',
+    isEditable: true
+  },
+
   courses: {
     byIDs: {
       1235: {
