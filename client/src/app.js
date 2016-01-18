@@ -4,7 +4,7 @@ import { FetchConfig, AuthorizeStep } from 'aurelia-auth';
 import { filter, find } from 'lodash';
 import { Modal } from './models';
 import { createStore, combineReducers, initialState } from 'store.js';
-import coursesReducer from './reducers/courses.js';
+import { coursesReducer, planReducer } from './reducers/courses.js';
 
 @inject(FetchConfig, EventAggregator)
 export class App {
@@ -28,7 +28,8 @@ export class App {
     });
 
     const store = createStore(combineReducers({
-      courses: coursesReducer
+      courses: coursesReducer,
+      plan: planReducer
     }), initialState, events);
 
     this.state = store.getState();

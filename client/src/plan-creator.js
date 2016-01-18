@@ -34,7 +34,7 @@ export class PlanCreator {
     .then(data => {
       this.events.publish('dispatch', {
         type: 'SET_PLAN',
-        courses: data.courses
+        data
       });
     });
   }

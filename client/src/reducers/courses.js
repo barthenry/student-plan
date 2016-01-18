@@ -1,6 +1,6 @@
 import { find } from 'lodash';
 
-export default function(courses = {}, action) {
+export function coursesReducer(courses = {}, action) {
   switch (action.type) {
   case 'SELECT_COURSE':
     const previouslySelected = find(courses.byIDs, (course) => course.isSelected);
@@ -17,7 +17,7 @@ export default function(courses = {}, action) {
     courseReducer(courses.selected, action);
     return courses;
   case 'SET_PLAN':
-    Object.assign(courses, action.courses);
+    Object.assign(courses, action.data.courses);
 
     return courses;
   case 'UNSELECT_GROUP':
@@ -25,6 +25,23 @@ export default function(courses = {}, action) {
     return courses;
   default:
     return courses;
+  }
+}
+
+export function planReducer(plan = {}, action) {
+  switch (action.type) {
+  case 'SET_PLAN':
+    const { privateId, publicId, isEditable } = action.data;
+
+    Object.assign(plan, {
+      privateId,
+      publicId,
+      isEditable
+    });
+
+    return plan;
+  default:
+    return plan;
   }
 }
 
