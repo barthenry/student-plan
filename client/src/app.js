@@ -37,6 +37,8 @@ export class App {
     this.events.subscribe('newState', () => {
       this.state = store.getState();
 
+      window.localStorage.setItem(this.state.plan.privateId, JSON.stringify(this.state));
+
       this.events.publish('fc.events', this.getChosenGroups());
     });
 

@@ -65,6 +65,10 @@ export class Calendar {
       this.fullCalendar.removeEvents();
       this.fullCalendar.addEventSource(this.mapCoursesToEvents(courses));
     });
+
+    this.events.publish('dispatch', {
+      action: 'type'
+    });
   }
 
   mapCoursesToEvents(courses) {

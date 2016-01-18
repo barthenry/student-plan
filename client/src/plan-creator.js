@@ -3,6 +3,8 @@ import { Container, inject } from 'aurelia-dependency-injection';
 import { HttpClient } from 'aurelia-fetch-client';
 import { EventAggregator } from 'aurelia-event-aggregator';
 
+import { merge } from 'lodash';
+
 @inject(Container, HttpClient, EventAggregator)
 export class PlanCreator {
   @bindable courses;
@@ -34,7 +36,7 @@ export class PlanCreator {
     .then(data => {
       this.events.publish('dispatch', {
         type: 'SET_PLAN',
-        data
+        data: merge(data, JSON.parse(window.localStorage.getItem(id)))
       });
     });
   }
