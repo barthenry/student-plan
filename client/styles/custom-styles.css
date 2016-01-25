@@ -37,3 +37,11 @@ p.aurelia-validation-message:empty {
 .has-warning label {
     color: #8a6d3b;
 }
+
+.help-block {
+    color: #FF0124 !important;
+}
+
+.has-warning .form-control {
+    border-color: #FF0124 !important;
+}
