@@ -23,7 +23,7 @@ export function coursesReducer(courses = {}, action) {
   case 'UNSELECT_GROUP':
     const courseWithUnselectedGroup = find(map(courses.byIDs, (course) => course), (course) => {
       const chosenGroup = find(course.groups.byIDs, (group) => group.isChosen);
-      return chosenGroup.id === action.id;
+      return chosenGroup && chosenGroup.id === action.id;
     });
 
     courseReducer(courseWithUnselectedGroup, action);
