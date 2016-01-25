@@ -7,8 +7,8 @@ import {Validation} from 'aurelia-validation';
 @customElement('login-modal')
 export class LoginModal extends Modal{
     @bindable data = null;
-    email = "admin";
-    password = "password";
+    email = '';
+    password = '';
 
     constructor(auth, validation){
         super();

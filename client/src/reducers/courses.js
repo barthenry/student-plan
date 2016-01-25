@@ -1,4 +1,4 @@
-import { find } from 'lodash';
+import { find, map } from 'lodash';
 
 export function coursesReducer(courses = {}, action) {
   switch (action.type) {
@@ -21,7 +21,12 @@ export function coursesReducer(courses = {}, action) {
 
     return courses;
   case 'UNSELECT_GROUP':
-    courseReducer(courses.selected, action);
+    const courseWithUnselectedGroup = find(map(courses.byIDs, (course) => course), (course) => {
+      const chosenGroup = find(course.groups.byIDs, (group) => group.isChosen);
+      return chosenGroup.id === action.id;
+    });
+
+    courseReducer(courseWithUnselectedGroup, action);
     return courses;
   default:
     return courses;
