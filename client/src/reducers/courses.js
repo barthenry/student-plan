@@ -89,7 +89,8 @@ function groupsReducer(groups = {}, action) {
 
     return groups;
   case 'UNSELECT_GROUP':
-    groupReducer(groups.selected, action);
+    const unselectedGroup = find(groups.byIDs, (group) => group.id === action.id);
+    groupReducer(unselectedGroup, action);
     groups.selected = {};
 
     return groups;
