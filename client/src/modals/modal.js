@@ -18,4 +18,10 @@ export class Modal {
   showModal() {
     this.showing = true;
   }
+
+  onKeydown(event) {
+    if (event.which === 13) {
+      this.submit();
+    }
+  }
 }

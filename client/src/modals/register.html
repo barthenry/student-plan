@@ -4,19 +4,19 @@
         <modal-body validate.bind="validation">
             <div class="form-group">
                 <label for="email">E-mail</label>
-                <input type="text" value.bind="email" class="form-control" id="email" placeholder="Wpisz adres e-mail" keydown.trigger="submit()">
+                <input type="text" value.bind="email" class="form-control" id="email" placeholder="Wpisz adres e-mail" keydown.trigger="onKeyDown()">
             </div>
             <div class="form-group">
                 <label for="password">Hasło</label>
-                <input type="password" value.bind="password" class="form-control" id="password" placeholder="Wpisz hasło" keydown.trigger="submit()">
+                <input type="password" value.bind="password" class="form-control" id="password" placeholder="Wpisz hasło" keydown.trigger="onKeyDown()">
             </div>
             <div class="form-group">
                 <label for="passwordConfirmation">Potwierdzenie hasła</label>
-                <input type="password" value.bind="passwordConfirmation" class="form-control" id="passwordConfirmation" placeholder="Wpisz ponownie hasło" keydown.trigger="submit()">
+                <input type="password" value.bind="passwordConfirmation" class="form-control" id="passwordConfirmation" placeholder="Wpisz ponownie hasło" keydown.trigger="onKeyDown()">
             </div>
             <div class="form-group">
                 <label for="displayName">Wyświetlana nazwa</label>
-                <input type="text" value.bind="displayName" class="form-control" id="displayName" placeholder="Wpisz nazwę użytkownika (np. imię)" keydown.trigger="submit()">
+                <input type="text" value.bind="displayName" class="form-control" id="displayName" placeholder="Wpisz nazwę użytkownika (np. imię)" keydown.trigger="onKeyDown()">
             </div>
             <hr>
             <div class="alert alert-danger" if.bind="errorMessage">${errorMessage}</div>
